@@ -1,15 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Hero } from "../components";
+import { Title } from "../components";
 
-const Home = () => {
+const About = () => {
   return (
     <motion.div exit={{ opacity: 0 }}>
-      <Hero />
-
-      <h1>home</h1>
+      <Title heading="網站相關" />
+      相關說明
     </motion.div>
   );
 };
 
-export default Home;
+export default About;

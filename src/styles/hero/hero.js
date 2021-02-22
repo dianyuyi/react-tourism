@@ -1,15 +1,15 @@
 import styled from "@emotion/styled";
+import variables from "../common/variables";
 
 export const HeroContainer = styled.div`
-  background: #0c0c0c;
+  background: ${variables.primary};
   display: flex;
   justify-content: center;
   align-content: center;
   height: 100vh;
   padding: 0 1rem;
   position: relative;
-  margin-top: -80px;
-  color: #fff;
+  color: ${variables.inverse};
 
   :before {
     content: "";
@@ -47,7 +47,7 @@ export const VideoBg = styled.video`
 
 export const HeroContent = styled.div`
   z-index: 3;
-  height: calc(100vh - 80px);
+  height: 100vh;
   max-height: 100%;
   padding: 0rem calc((100vw - 1300px) / 2);
 `;

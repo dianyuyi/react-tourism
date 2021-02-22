@@ -2,12 +2,11 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   * {
-    font-family: serif,'Noto Serif TC';
+    font-family: 'Noto Serif TC',serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700;900&display=swap');
 
 `;
 

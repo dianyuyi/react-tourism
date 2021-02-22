@@ -2,8 +2,8 @@ import React, { Suspense } from "react";
 import { Route, Switch, useLocation, withRouter } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { ResetStyle, GlobalStyle } from "./styles/common/globalStyle";
-import { Home } from "./pages";
-import Loading from "./components/Loading";
+import { Home, ScenicSpot, About } from "./pages";
+import { Navbar, Loading } from "./components";
 
 const Layout = () => {
   const location = useLocation();
@@ -24,16 +24,14 @@ const Layout = () => {
       {/* <Router> */}
       <ResetStyle />
       <GlobalStyle />
-      {/* <Navbar />
-      <SideNavbar /> */}
+      <Navbar path={location.pathname} />
+      {/* <SideNavbar /> */}
       <ScrollToTop />
       <AnimatePresence>
         <Switch location={location} key={location.pathname}>
           <Route path="/" exact component={Home} />
-          {/* <Route path="/about" component={About} />
-          <Route path="/works" component={Works} />
-          <Route path="/work/:id" component={SingleWork} />
-          <Route path="/contact" component={Contact} /> */}
+          <Route path="/scenicSpot" component={ScenicSpot} />
+          <Route path="/about" exact component={About} />
           {/* <Route path="*" component={Error} /> */}
         </Switch>
       </AnimatePresence>
