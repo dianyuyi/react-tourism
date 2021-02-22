@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import { Route, Switch, useLocation, withRouter } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import { ResetStyle, GlobalStyle } from "./styles/common/globalStyle";
+import { Home } from "./pages";
+import Loading from "./components/Loading";
 
+const Layout = () => {
+  const location = useLocation();
+
+  function _ScrollToTop() {
+    const { pathname } = useLocation();
+
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+  }
+  const ScrollToTop = withRouter(_ScrollToTop);
+
+  return (
+    <>
+      {/* <Router> */}
+      <ResetStyle />
+      <GlobalStyle />
+      {/* <Navbar />
+      <SideNavbar /> */}
+      <ScrollToTop />
+      <AnimatePresence>
+        <Switch location={location} key={location.pathname}>
+          <Route path="/" exact component={Home} />
+          {/* <Route path="/about" component={About} />
+          <Route path="/works" component={Works} />
+          <Route path="/work/:id" component={SingleWork} />
+          <Route path="/contact" component={Contact} /> */}
+          {/* <Route path="*" component={Error} /> */}
+        </Switch>
+      </AnimatePresence>
+      {/* <Footer /> */}
+      {/* </Router> */}
+    </>
+  );
+};
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<Loading />}>
+      <Layout />
+    </Suspense>
   );
 }
 
