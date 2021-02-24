@@ -4,6 +4,8 @@ export default {
   // colors
   darkGrey: "#4d4d4d",
   grey: "#ccc",
+  lightGrey: "#eee",
+  waterBlue: "#4dd4dd",
 
   // grid
   width: "90%",

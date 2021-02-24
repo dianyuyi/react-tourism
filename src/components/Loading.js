@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { jsx, css } from "@emotion/react";
 import CircleLoader from "react-spinners/CircleLoader";
 
-const Loading = () => {
+const Loading = ({ loading }) => {
   const [color, setColor] = React.useState("#ccc");
 
   const override = css`
@@ -14,7 +14,7 @@ const Loading = () => {
 
   return (
     <LoadingBox>
-      <CircleLoader color={color} loading="false" css={override} size={150} />
+      <CircleLoader color={color} loading={loading} css={override} size={150} />
     </LoadingBox>
   );
 };

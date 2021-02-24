@@ -1,9 +1,10 @@
 import React, { Suspense } from "react";
 import { Route, Switch, useLocation, withRouter } from "react-router-dom";
+
 import { AnimatePresence } from "framer-motion";
 import { ResetStyle, GlobalStyle } from "./styles/common/globalStyle";
 import { Home, ScenicSpot, About } from "./pages";
-import { Navbar, Loading } from "./components";
+import { Navbar, Loading, SpotList } from "./components";
 
 const Layout = () => {
   const location = useLocation();
@@ -30,8 +31,14 @@ const Layout = () => {
       <AnimatePresence>
         <Switch location={location} key={location.pathname}>
           <Route path="/" exact component={Home} />
-          <Route path="/scenicSpot" component={ScenicSpot} />
-          <Route path="/about" exact component={About} />
+          <Route path="/scenicSpot" exact component={ScenicSpot} />
+          <Route
+            path="/scenicSpot/:city"
+            render={(props) => {
+              return <SpotList {...props} />;
+            }}
+          />
+          <Route path="/about" component={About} />
           {/* <Route path="*" component={Error} /> */}
         </Switch>
       </AnimatePresence>

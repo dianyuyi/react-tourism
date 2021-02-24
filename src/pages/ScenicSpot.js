@@ -1,12 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Title } from "../components";
+import { Title, SpotList } from "../components";
+// import { useGlobalContext } from "../context";
 
 const ScenicSpot = () => {
+  // const { cityName } = useGlobalContext();
+
   return (
     <motion.div exit={{ opacity: 0 }}>
-      <Title heading="縣市景點" />
-      景點頁
+      <SpotList />
     </motion.div>
   );
 };
