@@ -16,31 +16,31 @@ const AppProvider = ({ children }) => {
 
   const url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?";
 
-  const fetchSpots = useCallback(async () => {
-    setLoading(true);
-    try {
-      const callStr = "&$top=30&$format=JSON";
-      const skipStr = skipNums > 0 ? `&$skip=${skipNums}` : "";
-      const cityStr = cityEn ? `${cityEn}/` : "";
-      const searchStr = searchText ? `&$filter=${searchText}` : "";
-      const callUrl = `${url}${cityStr}${searchStr}${callStr}${skipStr}`;
+  // const fetchSpots = useCallback(async () => {
+  //   setLoading(true);
+  //   try {
+  //     const callStr = "&$top=30&$format=JSON";
+  //     const skipStr = skipNums > 0 ? `&$skip=${skipNums}` : "";
+  //     const cityStr = cityEn ? `${cityEn}/` : "";
+  //     const searchStr = searchText ? `&$filter=${searchText}` : "";
+  //     const callUrl = `${url}${cityStr}${searchStr}${callStr}${skipStr}`;
 
-      const response = await fetch(callUrl);
-      console.log(response);
-      const data = await response.json();
-      console.log(data);
-      if (data) {
-        const newScenicSpot = [...scenicSpot, ...data];
-        setScenicSpot(newScenicSpot);
-      } else {
-        setScenicSpot([]);
-      }
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      throw new Error(error);
-    }
-  }, [searchText, cityEn, skipNums]);
+  //     const response = await fetch(callUrl);
+  //     console.log(response);
+  //     const data = await response.json();
+  //     console.log(data);
+  //     if (data) {
+  //       const newScenicSpot = [...scenicSpot, ...data];
+  //       setScenicSpot(newScenicSpot);
+  //     } else {
+  //       setScenicSpot([]);
+  //     }
+  //     setLoading(false);
+  //   } catch (error) {
+  //     setLoading(false);
+  //     throw new Error(error);
+  //   }
+  // }, [searchText, cityEn, skipNums]);
 
   // useEffect(() => {
   //   fetchSpots();

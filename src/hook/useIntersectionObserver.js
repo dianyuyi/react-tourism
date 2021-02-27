@@ -18,6 +18,7 @@ export const useIntersectionObserver = (
     (entries, observerInstance) => {
       // checks to see if the element is intersecting
 
+      // if (entry && entry.isIntersecting) {
       if (entries[0].intersectionRatio > 0) {
         // if it is update the state, we set triggered as to not re-observe the element
         setTargetState({
@@ -28,10 +29,13 @@ export const useIntersectionObserver = (
         });
         // unobserve the element
         if (targetState.isDataEnd) {
-          // const { loading, scenicSpot } = useScrollFetch();
           // observerInstance.unobserve(ref.current);
           console.log("data end");
         }
+
+        // if (loadRef.current) {
+        //   observer.observe(loadRef.current);
+        // }
       }
       return;
     },
