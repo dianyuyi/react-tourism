@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
+
 
 export const useScrollFetch = (skipNums, searchText, city) => {
   const url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?";
@@ -11,19 +13,20 @@ export const useScrollFetch = (skipNums, searchText, city) => {
   const [loading, setLoading] = useState(false);
   const [scenicSpot, setScenicSpot] = useState([]);
 
-  const fetchSpots = async () => {
+  const fetchSpots = () => {
     setLoading(true);
     try {
-      const response = await fetch(callUrl);
-      console.log(response);
-      const data = await response.json();
-      console.log(data);
-      if (data) {
-        const newScenicSpot = [...scenicSpot, ...data];
-        setScenicSpot(newScenicSpot);
-      } else {
-        setScenicSpot([]);
-      }
+      axios
+        .get(callUrl)
+        .then((res) => {
+          console.log(res)
+          const data = await response.json();
+          const newScenicSpot = [...scenicSpot, ...data];
+          setScenicSpot(newScenicSpot);
+        })
+        .catch(() => {
+          setScenicSpot([]);
+        });
       setLoading(false);
     } catch (error) {
       setLoading(false);

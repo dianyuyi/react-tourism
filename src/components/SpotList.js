@@ -9,31 +9,35 @@ import { useParams } from "react-router-dom";
 const SpotList = (props) => {
   // console.log(props);
   const { city } = useParams();
-  const { transName } = useCityNameTrans(city);
+  console.log(city);
+
+  const [cityParams, setCityParams] = useState("");
+  const [skipNums, setSkipNums] = useState(0);
+  const [cityName, setCityName] = useCityNameTrans(city);
+
   const loadRef = useRef(null);
   const [targetState, setTargetState] = useIntersectionObserver(loadRef, {
     threshold: 1,
   });
+  const { loading, scenicSpot } = useScrollFetch(skipNums, cityParams);
 
-  // useEffect(() => {
-  //   if (props && props.match) {
-  //     let name = props.location.query;
-  //     let value = props.match.params.city;
-  //     setCityName(name);
-  //     setCityEn(value);
-  //   } else if (city && !props.location.query) {
-  //     setCityEn(city);
-  //   } else {
-  //     setCityName("");
-  //     setCityEn("");
-  //   }
-  //   console.log(targetState.inView);
-  //   if (targetState.inView) {
-  //     let updateSkip = skipNums + 30;
-  //     setSkipNums(updateSkip);
-  //     console.log("ref act");
-  //   }
-  // }, [targetState.inView]);
+  useEffect(() => {
+    // if (props && props.match) {
+    //   let name = props.location.query;
+    //   let value = props.match.params.city;
+    // } else if (city && !props.location.query) {
+    //   setCityEn(city);
+    // } else {
+    //   setCityName("");
+    //   setCityEn("");
+    // }
+    console.log(targetState.inView);
+    if (targetState.inView) {
+      let updateSkip = skipNums + 30;
+      setSkipNums(updateSkip);
+      console.log("ref act", updateSkip);
+    }
+  }, [targetState.inView]);
 
   return (
     <>

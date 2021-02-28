@@ -6,15 +6,15 @@ import { testData } from "./data/testdata";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
-  const [scenicSpot, setScenicSpot] = useState([]);
+  // const [scenicSpot, setScenicSpot] = useState([]);
   // const [scenicSpot, setScenicSpot] = useState(testData); // test
-  const [cityName, setCityName] = useState("");
-  const [cityEn, setCityEn] = useState("");
-  const [skipNums, setSkipNums] = useState(0);
+  // const [cityName, setCityName] = useState("");
+  // const [cityEn, setCityEn] = useState("");
+  // const [skipNums, setSkipNums] = useState(0);
 
-  const url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?";
+  // const url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?";
 
   // const fetchSpots = useCallback(async () => {
   //   setLoading(true);
