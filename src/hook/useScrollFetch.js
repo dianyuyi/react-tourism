@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
 export const useScrollFetch = (skipNums, searchText, city) => {
-  const url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?";
-  const callStr = "&$top=30&$format=JSON";
+  const url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot";
+  const getStr = "&$top=30&$format=JSON";
   const skipStr = skipNums > 0 ? `&$skip=${skipNums}` : "";
-  const cityStr = city ? `${city}/` : "";
+  const cityStr = city ? `/${city}?` : "";
+  const queryStr = city ? "" : `?`;
   const searchStr = searchText ? `&$filter=${searchText}` : "";
-  const callUrl = `${url}${cityStr}${searchStr}${callStr}${skipStr}`;
+  const callUrl = `${url}${cityStr}${queryStr}${searchStr}${getStr}${skipStr}`;
+
+  console.log(callUrl); // for check
 
   const [loading, setLoading] = useState(false);
   const [scenicSpot, setScenicSpot] = useState([]);
@@ -19,8 +21,7 @@ export const useScrollFetch = (skipNums, searchText, city) => {
       axios
         .get(callUrl)
         .then((res) => {
-          console.log(res)
-          const data = await response.json();
+          const data = res.data;
           const newScenicSpot = [...scenicSpot, ...data];
           setScenicSpot(newScenicSpot);
         })

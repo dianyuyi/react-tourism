@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import { useScrollFetch } from "./useScrollFetch";
 // memo: https://sasacode.wordpress.com/2019/12/11/intersection-observer-api-with-react-hook/
 
 export const useIntersectionObserver = (
@@ -7,6 +6,14 @@ export const useIntersectionObserver = (
   { threshold, root, rootMargin }
 ) => {
   // configure the state
+  // const [targetState, setTargetState] = useState(false);
+
+  // const options = {
+  //   threshold: threshold || 0,
+  //   root: root || null,
+  //   rootMargin: rootMargin || "0%",
+  // };
+
   const [targetState, setTargetState] = useState({
     inView: false,
     triggered: false,
@@ -18,9 +25,8 @@ export const useIntersectionObserver = (
     (entries, observerInstance) => {
       // checks to see if the element is intersecting
 
-      // if (entry && entry.isIntersecting) {
-      if (entries[0].intersectionRatio > 0) {
-        // if it is update the state, we set triggered as to not re-observe the element
+      console.log(entries);
+      if (entries && entries[0].isIntersecting) {
         setTargetState({
           inView: true,
           triggered: true,
@@ -28,15 +34,15 @@ export const useIntersectionObserver = (
           isDataEnd: false,
         });
         // unobserve the element
-        if (targetState.isDataEnd) {
-          // observerInstance.unobserve(ref.current);
-          console.log("data end");
-        }
-
-        // if (loadRef.current) {
-        //   observer.observe(loadRef.current);
-        // }
+      } else {
+        setTargetState({
+          inView: false,
+          triggered: false,
+          observer: observerInstance,
+          isDataEnd: true,
+        });
       }
+
       return;
     },
     {
@@ -47,10 +53,9 @@ export const useIntersectionObserver = (
   );
 
   useEffect(() => {
-    // check that the element exists, and has not already been triggered
     if (ref.current && !targetState.triggered) {
       observer.observe(ref.current);
     }
-  });
+  }, []);
   return [targetState, setTargetState];
 };

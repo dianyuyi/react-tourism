@@ -15,7 +15,7 @@ export const Nav = styled.nav`
   position: fixed;
   top: 0;
   @media screen and (max-width: ${variables.breakpointPhone}) {
-    /* display: none; */
+    display: none;
   }
 `;
 export const LogoIcon = styled.div`
@@ -34,7 +34,7 @@ export const NavMenu = styled.div`
   align-items: center;
 
   @media screen and (max-width: 768px) {
-    /* display: none; */
+    display: none;
   }
 `;
 
@@ -57,6 +57,6 @@ export const NavBtn = styled.div`
   margin-right: 24px;
 
   @media screen and (max-width: ${variables.breakpointPhone}) {
-    /* display: none; */
+    display: none;
   }
 `;

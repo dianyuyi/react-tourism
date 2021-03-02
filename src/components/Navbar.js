@@ -29,7 +29,7 @@ function Navbar({ path }) {
           <NavLink path={path} to="/about">
             網站相關
           </NavLink>
-          {citys.map((city, index) => {
+          {/* {citys.map((city, index) => {
             const path = {
               pathname: `/scenicSpot/${city.value}`,
               query: city.name,
@@ -39,7 +39,7 @@ function Navbar({ path }) {
                 {city.name}
               </Link>
             );
-          })}
+          })} */}
         </NavMenu>
       </NavContent>
     </Nav>

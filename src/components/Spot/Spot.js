@@ -1,7 +1,8 @@
 import React from "react";
 // import { Link } from "react-router-dom";
-import { SpotFig, ImgBox, IntroBox } from "../styles/scenic/spot";
-import noImage from "../assets/imgs/noImage2.png";
+import { SpotFig, ImgBox, IntroBox } from "../../styles/scenic/spot";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import noImage from "../../assets/imgs/noImage2.png";
 
 const Spot = ({ item }) => {
   const {
@@ -17,13 +18,15 @@ const Spot = ({ item }) => {
   return (
     <SpotFig key={ID}>
       <ImgBox>
-        <img
+        <LazyLoadImage
+          className="spot-img"
           src={Picture && Picture.PictureUrl1 ? Picture.PictureUrl1 : noImage}
           alt={
             Picture && Picture.PictureDescription1
               ? Picture.PictureDescription1
               : Name
           }
+          effect="blur"
         />
       </ImgBox>
       <IntroBox>

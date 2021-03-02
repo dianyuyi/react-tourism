@@ -4,7 +4,7 @@ import { Route, Switch, useLocation, withRouter } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { ResetStyle, GlobalStyle } from "./styles/common/globalStyle";
 import { Home, ScenicSpot, About } from "./pages";
-import { Navbar, Loading, SpotList } from "./components";
+import { Navbar, SideNavbar, Loading, SpotList } from "./components";
 
 const Layout = () => {
   const location = useLocation();
@@ -26,7 +26,7 @@ const Layout = () => {
       <ResetStyle />
       <GlobalStyle />
       <Navbar path={location.pathname} />
-      {/* <SideNavbar /> */}
+      <SideNavbar />
       <ScrollToTop />
       <AnimatePresence>
         <Switch location={location} key={location.pathname}>

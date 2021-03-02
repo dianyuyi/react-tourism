@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { jsx, css } from "@emotion/react";
-import CircleLoader from "react-spinners/CircleLoader";
+import PuffLoader from "react-spinners/PuffLoader";
 
 const Loading = ({ loading }) => {
   const [color, setColor] = React.useState("#ccc");
@@ -14,7 +14,7 @@ const Loading = ({ loading }) => {
 
   return (
     <LoadingBox>
-      <CircleLoader color={color} loading={loading} css={override} size={150} />
+      <PuffLoader color={color} loading={loading} css={override} size={150} />
     </LoadingBox>
   );
 };
@@ -25,8 +25,7 @@ const LoadingBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
   background: #fff;
   z-index: 9999;
   position: fixed;

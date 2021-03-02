@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import variables from "../common/variables";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 // import { Link } from "react-router-dom";
 
 export const SpotFig = styled.figure`
@@ -25,7 +26,7 @@ export const ImgBox = styled.div`
   height: 200px;
   overflow: hidden;
 
-  img {
+  .spot-img {
     max-width: 100%;
     min-height: 200px;
   }
@@ -33,7 +34,7 @@ export const ImgBox = styled.div`
   @media screen and (max-width: ${variables.breakpointPhone}) {
     height: 160px;
 
-    img {
+    .spot-img {
       min-height: 160px;
     }
   }
