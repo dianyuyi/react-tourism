@@ -1,6 +1,14 @@
-import * as React from "react";
-import { SideNavListItem, SideNavLink } from "./sidenavStyle";
-import { citys } from "../../data/citys";
+import React from "react";
+import {
+  SideNavListItem,
+  SideNavLink,
+  SideNavSecondTitle,
+} from "./sidenavStyle";
+import SecondMenu from "./SecondMenu";
+import { cityArea } from "../../data/cityArea";
+import { MdCardTravel, MdInfo } from "react-icons/md";
+import { GiTreeBranch } from "react-icons/gi";
+import { BiCaretRight } from "react-icons/bi";
 
 const variants = {
   open: {
@@ -22,49 +30,59 @@ const variants = {
 };
 
 export const MenuItem = ({ toggle }) => {
+  const [isFolderOpen, setIsFolderOpen] = React.useState(false);
   return (
     <>
       <SideNavListItem
-        className="one-line top"
+        className="top"
         onClick={toggle}
         variants={variants}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        <SideNavLink to="/">回首頁</SideNavLink>
+        <SideNavLink to="/">
+          <GiTreeBranch />
+          <span>返回首頁</span>
+        </SideNavLink>
       </SideNavListItem>
 
       <SideNavListItem
-        onClick={toggle}
+        onClick={() => setIsFolderOpen(!isFolderOpen)}
         variants={variants}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        <SideNavLink to="/scenicSpot">全台景點</SideNavLink>
+        <SideNavLink to="">
+          <MdCardTravel />
+          <span>全台景點</span>
+        </SideNavLink>
       </SideNavListItem>
-      {citys.map((city) => {
-        return (
-          <SideNavListItem
-            key={city.value}
-            onClick={toggle}
-            variants={variants}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <SideNavLink to={`/scenicSpot/${city.value}`}>
-              {city.name}
-            </SideNavLink>
+      {isFolderOpen ? (
+        <>
+          <SideNavListItem onClick={toggle} variants={variants}>
+            <SideNavSecondTitle>
+              <SideNavLink to="/scenicSpot" className="all-link">
+                <span>全台景點</span>
+                <BiCaretRight />
+              </SideNavLink>
+            </SideNavSecondTitle>
           </SideNavListItem>
-        );
-      })}
+          {cityArea.map((item) => {
+            return <SecondMenu key={item.area} item={item} toggle={toggle} />;
+          })}
+        </>
+      ) : null}
       <SideNavListItem
-        className="one-line bottom"
+        className="bottom"
         onClick={toggle}
         variants={variants}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        <SideNavLink to="/about">網站相關</SideNavLink>
+        <SideNavLink to="/about">
+          <MdInfo />
+          <span>網站相關</span>
+        </SideNavLink>
       </SideNavListItem>
     </>
   );

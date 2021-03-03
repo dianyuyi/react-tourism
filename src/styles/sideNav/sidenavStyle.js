@@ -52,7 +52,8 @@ export const SideBg = styled(motion.div)`
   right: 0;
   bottom: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
+  background: #fff;
+  /* background: rgba(255, 255, 255, 0.95); */
 `;
 
 export const SideNavList = styled(motion.div)`
@@ -76,26 +77,77 @@ export const SideNavList = styled(motion.div)`
 
 export const SideNavListItem = styled(motion.div)`
   padding: 1rem;
-  width: 33%;
+  /* width: 33%; */
+  width: 100%;
+  font-weight: 500;
   text-align: center;
-  &.one-line {
-    width: 90%;
-    margin: auto;
-  }
+
   &.top {
     border-bottom: solid 1px ${variables.grey};
   }
   &.bottom {
     border-top: solid 1px ${variables.grey};
   }
+  &.folder {
+    pointer-events: fill;
+    color: ${variables.primary};
+    cursor: pointer;
+  }
 `;
 export const SideNavLink = styled(Link)`
   color: ${variables.primary};
   text-decoration: none;
   padding: 0 0.5rem;
-  font-family: "creamfont-1.1 regular";
   font-size: 1.25rem;
   font-weight: 300;
   cursor: pointer;
   pointer-events: fill;
+
+  svg {
+    margin-right: 0.5rem;
+    vertical-align: bottom;
+  }
+  &.all-link {
+    padding: 0.25rem;
+    font-size: 1.15rem;
+    span {
+      padding: 0.25rem;
+    }
+    svg {
+      margin-right: 0;
+    }
+  }
+  &.folder-link {
+    font-size: 1rem;
+    border-right: solid 1px ${variables.grey};
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    :last-child {
+      border-right: none;
+    }
+  }
+`;
+
+export const SideNavSecond = styled.div`
+  display: ${({ isOpen }) => (isOpen ? `block` : `none`)};
+  overflow: hidden;
+  cursor: pointer;
+  pointer-events: fill;
+  transition: 0.3s;
+`;
+
+export const SideNavSecondTitle = styled.div`
+  display: flex;
+  padding-left: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: ${({ isOpen }) => (isOpen ? `1rem` : `0`)};
+  p {
+    border-bottom: ${({ isOpen }) =>
+      isOpen ? `solid 1px ${variables.primary}` : `none`};
+
+    padding: 0.25rem;
+    font-size: 1.15rem;
+    font-weight: 300;
+  }
 `;

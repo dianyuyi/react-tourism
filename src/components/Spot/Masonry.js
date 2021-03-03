@@ -1,4 +1,13 @@
 import React from "react";
+import {
+  CellMeasurer,
+  CellMeasurerCache,
+  createMasonryCellPositioner,
+  Masonry,
+} from "react-virtualized";
+import "react-virtualized/styles.css";
+import { testData } from "../../data/testdata";
+import noImage from "../../assets/imgs/noImage2.png";
 
 const Masonry = ({ scenicSpot }) => {
   const noCacheList = scenicSpot.map((item, index) => ({

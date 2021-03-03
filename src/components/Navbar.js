@@ -3,14 +3,19 @@ import { Link } from "react-router-dom";
 import {
   Nav,
   NavLink,
+  NavBtn,
   NavContent,
   LogoIcon,
   NavMenu,
 } from "../styles/navbar/nav";
+import { Submenu } from "./index";
 import { GiTreeBranch } from "react-icons/gi";
+import { BiCaretDown, BiCaretLeft, BiCaretRight } from "react-icons/bi";
+
 import { citys } from "../data/citys";
 
 function Navbar({ path }) {
+  const [isSubmenuOpen, setIsSubmenuOpen] = React.useState(false);
   return (
     <Nav>
       <NavLink path={path} to="/">
@@ -23,25 +28,18 @@ function Navbar({ path }) {
           <NavLink path={path} to="/">
             首頁
           </NavLink>
-          <NavLink path={path} to="/scenicSpot">
-            縣市景點
-          </NavLink>
+          <NavBtn onClick={() => setIsSubmenuOpen(!isSubmenuOpen)}>
+            全台景點
+            <BiCaretDown />
+          </NavBtn>
           <NavLink path={path} to="/about">
             網站相關
           </NavLink>
-          {/* {citys.map((city, index) => {
-            const path = {
-              pathname: `/scenicSpot/${city.value}`,
-              query: city.name,
-            };
-            return (
-              <Link key={index} to={path}>
-                {city.name}
-              </Link>
-            );
-          })} */}
+          {isSubmenuOpen ? "test" : null}
         </NavMenu>
       </NavContent>
+
+      {isSubmenuOpen ? <Submenu /> : null}
     </Nav>
   );
 }
