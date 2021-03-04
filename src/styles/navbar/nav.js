@@ -53,8 +53,13 @@ export const NavLink = styled(Link)`
 export const NavBtn = styled.div`
   display: flex;
   width: 120px;
+  justify-content: center;
   align-items: center;
   margin-right: 24px;
+
+  svg {
+    pointer-events: none;
+  }
 
   @media screen and (max-width: ${variables.breakpointPhone}) {
     display: none;

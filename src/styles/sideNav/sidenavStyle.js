@@ -62,8 +62,8 @@ export const SideNavList = styled(motion.div)`
   flex-wrap: wrap;
   place-content: center start;
   width: 100%;
-  padding: 2rem 0;
-  margin-top: 10%;
+  padding: 1rem 0;
+  margin-top: 5%;
   &.preventClick {
     pointer-events: none;
     > div > a {
@@ -81,6 +81,7 @@ export const SideNavListItem = styled(motion.div)`
   width: 100%;
   font-weight: 500;
   text-align: center;
+  /* margin-bottom: ${({ isOpen }) => (isOpen ? `0.5rem` : `0`)}; */
 
   &.top {
     border-bottom: solid 1px ${variables.grey};
@@ -88,12 +89,15 @@ export const SideNavListItem = styled(motion.div)`
   &.bottom {
     border-top: solid 1px ${variables.grey};
   }
+
   &.folder {
+    padding: 0.25rem 0 0.75rem 0;
     pointer-events: fill;
     color: ${variables.primary};
     cursor: pointer;
   }
 `;
+
 export const SideNavLink = styled(Link)`
   color: ${variables.primary};
   text-decoration: none;

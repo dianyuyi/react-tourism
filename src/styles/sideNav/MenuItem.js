@@ -48,6 +48,7 @@ export const MenuItem = ({ toggle }) => {
 
       <SideNavListItem
         onClick={() => setIsFolderOpen(!isFolderOpen)}
+        isOpen={isFolderOpen}
         variants={variants}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -59,7 +60,11 @@ export const MenuItem = ({ toggle }) => {
       </SideNavListItem>
       {isFolderOpen ? (
         <>
-          <SideNavListItem onClick={toggle} variants={variants}>
+          <SideNavListItem
+            onClick={toggle}
+            variants={variants}
+            className="folder"
+          >
             <SideNavSecondTitle>
               <SideNavLink to="/scenicSpot" className="all-link">
                 <span>全台景點</span>

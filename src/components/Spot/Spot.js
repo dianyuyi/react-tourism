@@ -4,7 +4,8 @@ import { SpotFig, ImgBox, IntroBox } from "../../styles/scenic/spot";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import noImage from "../../assets/imgs/noImage2.png";
 
-const Spot = ({ item }) => {
+const Spot = ({ item, index }) => {
+  // console.log(item);
   const {
     ID,
     Name,
@@ -16,7 +17,7 @@ const Spot = ({ item }) => {
     Position,
   } = item;
   return (
-    <SpotFig key={ID}>
+    <SpotFig key={index}>
       <ImgBox>
         <LazyLoadImage
           className="spot-img"

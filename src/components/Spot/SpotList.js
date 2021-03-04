@@ -7,8 +7,9 @@ import { useIntersectionObserver } from "../../hook/useIntersectionObserver";
 import { useCityNameTrans } from "../../hook/useCityNameTrans";
 import { useScrollFetch } from "../../hook/useScrollFetch";
 import { useParams } from "react-router-dom";
-import { testData } from "../../data/testdata";
+// import { testData } from "../../data/testdata";
 import noImage from "../../assets/imgs/noImage2.png";
+import OverviewListContainer from "./Masonry/OverviewListContainer.jsx";
 
 const SpotList = (props) => {
   // console.log(props);
@@ -24,14 +25,15 @@ const SpotList = (props) => {
   const [targetState, setTargetState] = useIntersectionObserver(loadRef, {
     threshold: 1,
   });
-  // const { loading, scenicSpot } = useScrollFetch(
-  //   skipNums,
-  //   searchText,
-  //   cityParams
-  // );
+
+  const { loading, scenicSpot } = useScrollFetch(
+    skipNums,
+    searchText,
+    cityParams
+  );
   // tmp test
-  const scenicSpot = testData;
-  const loading = false;
+  // const scenicSpot = [];
+  // const loading = false;
 
   useEffect(() => {
     console.log(targetState.inView);
@@ -45,43 +47,14 @@ const SpotList = (props) => {
     }
   }, [targetState.inView]);
 
-  // const Cell = ({ columnIndex, rowIndex, style, data }) => {
-  //   const { scenicSpot, columnCount } = data;
-  //   const singleColumnIndex = columnIndex + rowIndex * columnCount;
-  //   const spot = scenicSpot[singleColumnIndex];
-  //   console.log(singleColumnIndex);
-  //   return <div style={style}>{spot && <Spot item={spot} />}</div>;
-  // };
-
   return (
     <>
       <Title heading={cityName ? `${cityName}景點` : `全台景點`} />
-      {/* <AutoSizer defaultWidth={2300} defaultHeight={1080}>
-        {({ width, height }) => {
-          const cardWidth = 280;
-          const cardHeight = 300;
-          const columnCount = Math.floor(width / cardWidth);
-          const rowCount = Math.ceil(scenicSpot.length / columnCount);
-
-          return (
-            <Grid
-              width={cardWidth}
-              height={cardHeight}
-              columnCount={columnCount}
-              columnWidth={cardWidth}
-              rowCount={rowCount}
-              rowHeight={cardHeight}
-              itemData={{ scenicSpot, columnCount }}
-            >
-              {Cell}
-            </Grid>
-          );
-        }}
-      </AutoSizer> */}
       <SpotListContainer>
-        {scenicSpot.map((item, index) => {
+        <OverviewListContainer scenicSpot={scenicSpot} />
+        {/* {scenicSpot.map((item, index) => {
           return <Spot key={index} item={item} />;
-        })}
+        })} */}
 
         <SpotObserver ref={loadRef} loading={loading} />
       </SpotListContainer>

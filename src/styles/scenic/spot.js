@@ -4,38 +4,41 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 // import { Link } from "react-router-dom";
 
 export const SpotFig = styled.figure`
-  width: 22.5%;
+  /* width: 22.5%; */
   margin: 1.25%;
   padding-bottom: 0.5rem;
   border-radius: 5px;
   overflow: hidden;
 
   @media screen and (max-width: ${variables.breakpointLaptop}) {
-    width: 30%;
-    margin: 1.5%;
+    /* width: 30%;
+    margin: 1.5%; */
   }
   @media screen and (max-width: ${variables.breakpointPhone}) {
-    width: 45%;
-    margin: 2%;
+    /* width: 45%;
+    margin: 2%; */
   }
 `;
 export const ImgBox = styled.div`
   width: 100%;
   background-color: ${variables.lightGrey};
   text-align: center;
-  height: 200px;
+  min-height: 150px;
   overflow: hidden;
 
   .spot-img {
-    max-width: 100%;
-    min-height: 200px;
+    /* max-width: 100%; */
+    /* min-height: 200px; */
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
   }
 
   @media screen and (max-width: ${variables.breakpointPhone}) {
-    height: 160px;
+    /* height: 160px; */
 
     .spot-img {
-      min-height: 160px;
+      /* min-height: 160px; */
     }
   }
 `;
