@@ -66,7 +66,17 @@ export const SideNavList = styled(motion.div)`
   margin-top: 5%;
   &.preventClick {
     pointer-events: none;
+    > * {
+      display: none;
+      pointer-events: none;
+    }
+    > div > div {
+      pointer-events: none;
+    }
     > div > a {
+      pointer-events: none;
+    }
+    > div > div > a {
       pointer-events: none;
     }
     > div > button {
@@ -92,9 +102,9 @@ export const SideNavListItem = styled(motion.div)`
 
   &.folder {
     padding: 0.25rem 0 0.75rem 0;
-    pointer-events: fill;
+    /* pointer-events: fill; */
     color: ${variables.primary};
-    cursor: pointer;
+    /* cursor: pointer; */
   }
 `;
 
@@ -104,12 +114,16 @@ export const SideNavLink = styled(Link)`
   padding: 0 0.5rem;
   font-size: 1.25rem;
   font-weight: 300;
+  transition: all ease 0.3s;
   cursor: pointer;
   pointer-events: fill;
 
   svg {
     margin-right: 0.5rem;
     vertical-align: bottom;
+  }
+  &:hover {
+    transform: scale(1.1);
   }
   &.all-link {
     padding: 0.25rem;
@@ -146,6 +160,7 @@ export const SideNavSecondTitle = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: ${({ isOpen }) => (isOpen ? `1rem` : `0`)};
+  pointer-events: fill;
   p {
     border-bottom: ${({ isOpen }) =>
       isOpen ? `solid 1px ${variables.primary}` : `none`};

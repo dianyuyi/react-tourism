@@ -35,8 +35,8 @@ const SecondMenu = ({ item, toggle }) => {
       className="folder"
       key={area}
       variants={variants}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
+      // whileHover={{ scale: 1.1 }}
+      // whileTap={{ scale: 0.95 }}
     >
       <SideNavSecondTitle
         onClick={() => setIsSecondOpen(!isSecondOpen)}
