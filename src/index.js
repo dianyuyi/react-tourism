@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-// import { AppProvider } from "./context";
+import { AppProvider } from "./context";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <React.Fragment>
     <Router onUpdate={() => window.scrollTo(0, 0)}>
-      {/* <AppProvider> */}
-      <App />
-      {/* </AppProvider> */}
+      <AppProvider>
+        <App />
+      </AppProvider>
     </Router>
   </React.Fragment>,
   document.getElementById("root")

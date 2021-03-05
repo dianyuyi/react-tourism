@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   Nav,
@@ -10,13 +10,34 @@ import {
 } from "../styles/navbar/nav";
 import { Submenu } from "./index";
 import { GiTreeBranch } from "react-icons/gi";
-import { BiCaretDown, BiCaretLeft, BiCaretRight } from "react-icons/bi";
-
-import { citys } from "../data/citys";
+import {
+  BiCaretDown,
+  BiCaretUp,
+  BiCaretLeft,
+  BiCaretRight,
+} from "react-icons/bi";
 
 function Navbar({ path }) {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const [submenuPos, setSubmenuPos] = useState({});
+  const [isScrollDown, setIsScrolldown] = useState(false);
+
+  let listener = null;
+  const [scrollState, setScrollState] = useState("top");
+
+  useEffect(() => {
+    listener = document.addEventListener("scroll", (e) => {
+      var scrolled = document.scrollingElement.scrollTop;
+      if (scrolled >= 60) {
+        setIsScrolldown(true);
+      } else {
+        setIsScrolldown(false);
+      }
+    });
+    return () => {
+      document.removeEventListener("scroll", listener);
+    };
+  }, [scrollState]);
 
   const handleSubmenuOpen = (e) => {
     e.preventDefault();
@@ -27,27 +48,36 @@ function Navbar({ path }) {
     setSubmenuPos({ posX, posY });
     setIsSubmenuOpen(!isSubmenuOpen);
   };
+
   return (
-    <Nav>
-      <NavLink to="/">
+    <Nav isScrollDown={isScrollDown} path={path}>
+      <NavLink path={path} to="/">
         <LogoIcon>
           <GiTreeBranch />
         </LogoIcon>
       </NavLink>
       <NavContent>
         <NavMenu>
-          <NavLink to="/">首頁</NavLink>
+          <NavLink path={path} to="/">
+            搜尋景點
+          </NavLink>
           <NavBtn onClick={handleSubmenuOpen}>
             全台景點
-            <BiCaretDown />
+            {isSubmenuOpen ? <BiCaretUp /> : <BiCaretDown />}
           </NavBtn>
-          <NavLink to="/about">網站相關</NavLink>
+          <NavLink path={path} to="/about">
+            網站相關
+          </NavLink>
         </NavMenu>
       </NavContent>
 
-      {isSubmenuOpen ? (
-        <Submenu submenuPos={submenuPos} setIsSubmenuOpen={setIsSubmenuOpen} />
-      ) : null}
+      {/* {isSubmenuOpen ? ( */}
+      <Submenu
+        submenuPos={submenuPos}
+        setIsSubmenuOpen={setIsSubmenuOpen}
+        isSubmenuOpen={isSubmenuOpen}
+      />
+      {/* ) : null} */}
     </Nav>
   );
 }

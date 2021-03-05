@@ -30,8 +30,8 @@ export const MainTitle = styled.h1`
   font-weight: 500;
   font-size: clamp(2.5rem, 6vw, 4rem);
   line-height: 4rem;
-  padding: 2rem 0;
-  margin: 3rem 0;
+  padding: 2rem 0 0.5rem 0;
+  margin: 3rem 0 1rem 0;
   text-align: center;
   letter-spacing: 0.1em;
   /* :after {

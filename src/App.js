@@ -3,7 +3,7 @@ import { Route, Switch, useLocation, withRouter } from "react-router-dom";
 
 import { AnimatePresence } from "framer-motion";
 import { ResetStyle, GlobalStyle } from "./styles/common/globalStyle";
-import { Home, ScenicSpot, About } from "./pages";
+import { Home, ScenicSpot, About, Error } from "./pages";
 import { Navbar, SideNavbar, Loading, SpotList } from "./components";
 
 const Layout = () => {
@@ -39,7 +39,7 @@ const Layout = () => {
             }}
           />
           <Route path="/about" component={About} />
-          {/* <Route path="*" component={Error} /> */}
+          <Route path="*" component={Error} />
         </Switch>
       </AnimatePresence>
       {/* <Footer /> */}

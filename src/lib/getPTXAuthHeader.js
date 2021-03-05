@@ -1,10 +1,11 @@
-import jsSHA from "./sha1";
+import jsSHA from "jssha";
 
 const getPTXAuthHeader = () => {
   var AppID = "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF";
   var AppKey = "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF";
   var GMTString = new Date().toGMTString();
   var ShaObj = new jsSHA("SHA-1", "TEXT");
+  // var ShaObj = sha256("SHA-1", "TEXT");
   ShaObj.setHMACKey(AppKey, "TEXT");
   ShaObj.update("x-date: " + GMTString);
   var HMAC = ShaObj.getHMAC("B64");

@@ -8,3 +8,5 @@ export { default as SpotList } from "./Spot/SpotList";
 export { default as Spot } from "./Spot/Spot";
 export { default as Loading } from "./Loading";
 export { default as SpotObserver } from "./Spot/SpotObserver";
+export { default as Masonry } from "./Spot/Masonry/OverviewListContainer.jsx";
+export { default as Modal } from "./Spot/Modal/Modal";

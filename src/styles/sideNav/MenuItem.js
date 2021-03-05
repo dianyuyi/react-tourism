@@ -60,7 +60,7 @@ export const MenuItem = ({ toggle }) => {
       </SideNavListItem>
       {isFolderOpen ? (
         <>
-          <SideNavListItem
+          {/* <SideNavListItem
             onClick={toggle}
             variants={variants}
             className="folder"
@@ -71,7 +71,7 @@ export const MenuItem = ({ toggle }) => {
                 <BiCaretRight />
               </SideNavLink>
             </SideNavSecondTitle>
-          </SideNavListItem>
+          </SideNavListItem> */}
           {cityArea.map((item) => {
             return <SecondMenu key={item.area} item={item} toggle={toggle} />;
           })}

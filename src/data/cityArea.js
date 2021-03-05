@@ -1,5 +1,9 @@
 export const cityArea = [
   {
+    area: "全台景點",
+    citys: [{ name: "全台含離島", value: "" }],
+  },
+  {
     area: "北部地區",
     citys: [
       { name: "基隆市", value: "Keelung" },

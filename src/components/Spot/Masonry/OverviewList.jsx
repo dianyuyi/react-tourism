@@ -55,7 +55,7 @@ class OverviewList extends React.PureComponent {
             height: height,
           }}
         >
-          <Spot item={datum} index={index} />
+          <Spot item={datum} />
         </div>
       </CellMeasurer>
     );

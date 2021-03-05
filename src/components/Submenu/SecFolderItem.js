@@ -5,11 +5,6 @@ const SecFolderItem = ({ areaData, isOpen, areaPos, setIsSubmenuOpen }) => {
   const secContainer = useRef(null);
   const { citys } = areaData;
 
-  const handleRouteOpen = (e) => {
-    e.preventDefault();
-    setIsSubmenuOpen(false);
-  };
-
   return (
     <>
       {citys ? (

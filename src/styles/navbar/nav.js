@@ -1,10 +1,15 @@
 import styled from "styled-components";
 import variables from "../common/variables";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export const Nav = styled.nav`
-  background: transparent;
+export const Nav = styled(motion.nav)`
+  background: ${({ isScrollDown }) =>
+    isScrollDown ? `${variables.inverse}` : `transparent`};
+  color: ${({ path }) =>
+    path == `/` ? `${variables.inverse}` : `${variables.primary}`};
   /* background: rgba(255, 255, 255, 0.5); */
+  transition: all 0.5s ease;
   width: 100%;
   height: 60px;
   display: flex;
@@ -53,9 +58,11 @@ export const NavLink = styled(Link)`
 export const NavBtn = styled.div`
   display: flex;
   width: 120px;
+  letter-spacing: 1px;
+  font-weight: 300;
   justify-content: center;
   align-items: center;
-  margin-right: 24px;
+  cursor: pointer;
 
   svg {
     pointer-events: none;

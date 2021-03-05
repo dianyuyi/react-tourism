@@ -1,4 +1,5 @@
 export const citys = [
+  { name: "全台", value: "" },
   { name: "臺北市", value: "Taipei" },
   { name: "新北市", value: "NewTaipei" },
   { name: "桃園市", value: "Taoyuan" },

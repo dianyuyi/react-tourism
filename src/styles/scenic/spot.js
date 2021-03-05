@@ -9,6 +9,7 @@ export const SpotFig = styled.figure`
   padding-bottom: 0.5rem;
   border-radius: 5px;
   overflow: hidden;
+  cursor: pointer;
 
   @media screen and (max-width: ${variables.breakpointLaptop}) {
     /* width: 30%;

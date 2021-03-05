@@ -1,25 +1,41 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { SearchContainer, SearchForm } from "../styles/search/search_bar";
+import { withRouter } from "react-router-dom";
+
+import {
+  SearchContainer,
+  SearchForm,
+  SearchInputBox,
+  SearchBtn,
+} from "../styles/search/search_bar";
 import { citys } from "../data/citys";
 import { FaSearchLocation } from "react-icons/fa";
+import { useGlobalContext } from "../context";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
+  const { setSearchText } = useGlobalContext();
   const { register, handleSubmit } = useForm();
+  const { color, history } = props;
   const submitData = (data) => {
-    console.log(data);
+    // console.log(history);
+    setSearchText(data.search);
+    props.history.push(`/scenicSpot/${data.city}`);
   };
   return (
     <SearchContainer>
-      <SearchForm handleSubmit={submitData}>
-        <input
-          type="text"
-          name="searchText"
-          placeholder="山、海，任何想去的地方"
-          ref={register}
-        />
-        <FaSearchLocation />
-        <select name="citys" ref={register}>
+      <SearchForm onSubmit={handleSubmit(submitData)} color={color}>
+        <SearchInputBox>
+          <input
+            type="text"
+            name="search"
+            placeholder="山、海，任何想去的地方"
+            ref={register}
+            required
+          />
+          <FaSearchLocation />
+        </SearchInputBox>
+
+        <select name="city" ref={register}>
           {citys.map((city, index) => {
             return (
               <option value={city.value} key={index}>
@@ -28,10 +44,12 @@ const SearchBar = () => {
             );
           })}
         </select>
-        <button type="submit">搜尋</button>
+        <SearchBtn type="submit" value="搜尋">
+          搜尋
+        </SearchBtn>
       </SearchForm>
     </SearchContainer>
   );
 };
 
-export default SearchBar;
+export default withRouter(SearchBar);

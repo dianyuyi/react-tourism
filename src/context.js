@@ -7,12 +7,18 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [searchText, setSearchText] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectSpot, setSelectSpot] = useState({});
 
   return (
     <AppContext.Provider
       value={{
         searchText,
         setSearchText,
+        isModalOpen,
+        setIsModalOpen,
+        selectSpot,
+        setSelectSpot,
       }}
     >
       {children}

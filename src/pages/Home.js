@@ -6,8 +6,6 @@ const Home = () => {
   return (
     <motion.div exit={{ opacity: 0 }}>
       <Hero />
-
-      <h1>home</h1>
     </motion.div>
   );
 };

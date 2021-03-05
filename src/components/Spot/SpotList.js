@@ -1,21 +1,26 @@
-import React, { useRef, useState, useEffect, memo } from "react";
-import { Spot, Title, SpotObserver } from "../../components";
-import { SpotListContainer } from "../../styles/scenic/spotlist";
-import { FixedSizeGrid as Grid } from "react-window";
-import AutoSizer from "react-virtualized-auto-sizer";
+import React, { useRef, useState, useEffect } from "react";
+import { Title, SpotObserver, Masonry, Modal } from "../../components";
+import {
+  SpotListContainer,
+  SpotListSearchP,
+} from "../../styles/scenic/spotlist";
 import { useIntersectionObserver } from "../../hook/useIntersectionObserver";
 import { useCityNameTrans } from "../../hook/useCityNameTrans";
 import { useScrollFetch } from "../../hook/useScrollFetch";
 import { useParams } from "react-router-dom";
-// import { testData } from "../../data/testdata";
-import noImage from "../../assets/imgs/noImage2.png";
-import OverviewListContainer from "./Masonry/OverviewListContainer.jsx";
+import { useGlobalContext } from "../../context";
+import { testData } from "../../data/testdata";
 
 const SpotList = (props) => {
   // console.log(props);
   const { city } = useParams();
 
-  const [searchText, setSearchText] = useState("");
+  const {
+    searchText,
+    isModalOpen,
+    selectSpot,
+    setIsModalOpen,
+  } = useGlobalContext();
 
   const [cityParams, setCityParams] = useState(city);
   const [skipNums, setSkipNums] = useState(0);
@@ -25,14 +30,13 @@ const SpotList = (props) => {
   const [targetState, setTargetState] = useIntersectionObserver(loadRef, {
     threshold: 1,
   });
-
   const { loading, scenicSpot } = useScrollFetch(
     skipNums,
     searchText,
     cityParams
   );
   // tmp test
-  // const scenicSpot = [];
+  // const scenicSpot = testData;
   // const loading = false;
 
   useEffect(() => {
@@ -51,12 +55,16 @@ const SpotList = (props) => {
     <>
       <Title heading={cityName ? `${cityName}景點` : `全台景點`} />
       <SpotListContainer>
-        <OverviewListContainer scenicSpot={scenicSpot} />
-        {/* {scenicSpot.map((item, index) => {
-          return <Spot key={index} item={item} />;
-        })} */}
-
+        {searchText ? (
+          <SpotListSearchP>目前搜尋的關鍵字： {searchText}</SpotListSearchP>
+        ) : null}
+        <Masonry scenicSpot={scenicSpot} />
         <SpotObserver ref={loadRef} loading={loading} />
+        <Modal
+          isModalOpen={isModalOpen}
+          selectSpot={selectSpot}
+          setIsModalOpen={setIsModalOpen}
+        />
       </SpotListContainer>
     </>
   );

@@ -9,7 +9,7 @@ export const useCityNameTrans = (cityParams) => {
   const getCityName = () => {
     if (cityParams) {
       const selectCity = citys.filter((city) => city.value === cityParams);
-      // console.log(selectCity[0].name);
+      console.log(selectCity[0].name);
       setCityName(selectCity[0].name);
     } else {
       setCityName("");

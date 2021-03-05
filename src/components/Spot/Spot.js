@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 import { SpotFig, ImgBox, IntroBox } from "../../styles/scenic/spot";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import noImage from "../../assets/imgs/noImage2.png";
+import { useGlobalContext } from "../../context";
 
-const Spot = ({ item, index }) => {
-  // console.log(item);
+const Spot = ({ item }) => {
+  const { setIsModalOpen, setSelectSpot } = useGlobalContext();
+  const getClickSpot = () => {
+    setIsModalOpen(true);
+    setSelectSpot(item);
+  };
   const {
     ID,
     Name,
@@ -17,7 +22,7 @@ const Spot = ({ item, index }) => {
     Position,
   } = item;
   return (
-    <SpotFig key={index}>
+    <SpotFig key={ID} onClick={getClickSpot}>
       <ImgBox>
         <LazyLoadImage
           className="spot-img"
@@ -34,9 +39,6 @@ const Spot = ({ item, index }) => {
         <h3>{Name}</h3>
         <h4>{Address}</h4>
         <p>{DescriptionDetail}</p>
-        {/* <Link to={`/scenicspot/${id}`} className="btn btn-primary btn-details">
-          details
-        </Link> */}
       </IntroBox>
     </SpotFig>
   );
