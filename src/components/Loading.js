@@ -25,7 +25,7 @@ const LoadingBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 90%;
   background: #fff;
   z-index: 9999;
   position: fixed;

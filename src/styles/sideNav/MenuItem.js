@@ -42,7 +42,7 @@ export const MenuItem = ({ toggle }) => {
       >
         <SideNavLink to="/">
           <GiTreeBranch />
-          <span>返回首頁</span>
+          <span>返回搜尋</span>
         </SideNavLink>
       </SideNavListItem>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { withRouter } from "react-router-dom";
 
@@ -13,14 +13,20 @@ import { FaSearchLocation } from "react-icons/fa";
 import { useGlobalContext } from "../context";
 
 const SearchBar = (props) => {
-  const { setSearchText } = useGlobalContext();
+  const { setSearchText, searchText } = useGlobalContext();
   const { register, handleSubmit } = useForm();
   const { color, history } = props;
+  // console.log(history);
   const submitData = (data) => {
-    // console.log(history);
     setSearchText(data.search);
     props.history.push(`/scenicSpot/${data.city}`);
   };
+
+  useEffect(() => {
+    if (searchText && history.location === "/") {
+      setSearchText("");
+    }
+  }, [searchText]);
   return (
     <SearchContainer>
       <SearchForm onSubmit={handleSubmit(submitData)} color={color}>
@@ -30,7 +36,6 @@ const SearchBar = (props) => {
             name="search"
             placeholder="山、海，任何想去的地方"
             ref={register}
-            required
           />
           <FaSearchLocation />
         </SearchInputBox>

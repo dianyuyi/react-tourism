@@ -30,7 +30,7 @@ export const useScrollFetch = (skipNums, searchText, city) => {
           responseType: "json",
         })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           const data = res.data;
           const newScenicSpot = [...scenicSpot, ...data];
           setScenicSpot(newScenicSpot);

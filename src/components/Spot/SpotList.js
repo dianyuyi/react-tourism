@@ -2,7 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 import { Title, SpotObserver, Masonry, Modal } from "../../components";
 import {
   SpotListContainer,
+  SpotListNotice,
   SpotListSearchP,
+  SpotListVoid,
 } from "../../styles/scenic/spotlist";
 import { useIntersectionObserver } from "../../hook/useIntersectionObserver";
 import { useCityNameTrans } from "../../hook/useCityNameTrans";
@@ -37,17 +39,17 @@ const SpotList = (props) => {
   );
   // tmp test
   // const scenicSpot = testData;
-  // const loading = false;
+  // const loading = true;
 
   useEffect(() => {
-    console.log(targetState.inView);
+    // console.log(targetState.inView);
     if (targetState.inView && window.scrollY < 100) {
-      console.log("ref act initial", skipNums);
+      // console.log("ref act initial", skipNums);
     }
     if (targetState.inView && window.scrollY > 100) {
       let updateSkip = skipNums + 30;
       setSkipNums(updateSkip);
-      console.log("ref act below", updateSkip);
+      // console.log("ref act below", updateSkip);
     }
   }, [targetState.inView]);
 
@@ -56,7 +58,14 @@ const SpotList = (props) => {
       <Title heading={cityName ? `${cityName}景點` : `全台景點`} />
       <SpotListContainer>
         {searchText ? (
-          <SpotListSearchP>目前搜尋的關鍵字： {searchText}</SpotListSearchP>
+          <SpotListNotice>
+            <SpotListSearchP>目前搜尋的關鍵字： {searchText}</SpotListSearchP>
+          </SpotListNotice>
+        ) : null}
+        {!scenicSpot ? (
+          <SpotListNotice>
+            <SpotListVoid>沒有可以顯示的景點。試試其他關鍵字？</SpotListVoid>
+          </SpotListNotice>
         ) : null}
         <Masonry scenicSpot={scenicSpot} />
         <SpotObserver ref={loadRef} loading={loading} />
