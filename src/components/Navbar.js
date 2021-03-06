@@ -28,7 +28,7 @@ function Navbar({ path }) {
   useEffect(() => {
     listener = document.addEventListener("scroll", (e) => {
       var scrolled = document.scrollingElement.scrollTop;
-      if (scrolled >= 60) {
+      if (scrolled >= 100) {
         setIsScrolldown(true);
       } else {
         setIsScrolldown(false);
