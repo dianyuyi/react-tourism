@@ -20,6 +20,7 @@ export const ModalContainer = styled(motion.div)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: left;
   border-radius: 5px;
   overflow-y: scroll;
   @media screen and (max-width: ${variables.breakpointPhone}) {
@@ -35,7 +36,7 @@ export const ModalArticle = styled.div`
   /* display: flex; */
   float: left;
   border-bottom: solid 1px ${variables.grey};
-  margin: 0.5rem;
+  margin: 0.5rem 1rem;
   p {
     line-height: 1.2rem;
     margin-bottom: 0.5rem;
