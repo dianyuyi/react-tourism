@@ -1,7 +1,9 @@
 # 台灣各縣市觀光景點查詢
 
 DEMO 頁：[連結](https://react-tourism.netlify.app)
+
 proxy 測試中，目前偶爾會出現錯誤狀態。
+開發中需要透過https://cors-anywhere.herokuapp.com/ 來啟動 tmp server。
 
 ## 簡易功能介紹
 

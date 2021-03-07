@@ -27,6 +27,7 @@ const SpotList = (props) => {
   const [cityParams, setCityParams] = useState(city);
   const [skipNums, setSkipNums] = useState(0);
   const [cityName, setCityName] = useCityNameTrans(cityParams);
+  const [loadingt, setLoadingt] = useState(true);
 
   const loadRef = useRef(null);
   const [targetState, setTargetState] = useIntersectionObserver(loadRef, {
@@ -40,6 +41,17 @@ const SpotList = (props) => {
   // tmp test
   // const scenicSpot = testData;
   // const loading = true;
+  useEffect(() => {
+    if (scenicSpot) {
+      setTimeout(() => {
+        setLoadingt(false);
+      }, 1500);
+    } else {
+      setTimeout(() => {
+        setLoadingt(true);
+      }, 1500);
+    }
+  }, [scenicSpot]);
 
   useEffect(() => {
     // console.log(targetState.inView);
@@ -62,14 +74,14 @@ const SpotList = (props) => {
             <SpotListSearchP>目前搜尋的關鍵字： {searchText}</SpotListSearchP>
           </SpotListNotice>
         ) : null}
-        {!scenicSpot ? (
+        {scenicSpot.length == 0 && !loadingt ? (
           <SpotListNotice>
-            <SpotListVoid>沒有可以顯示的景點。試試其他關鍵字？</SpotListVoid>
+            <SpotListVoid>目前沒有可以顯示的景點⋯⋯</SpotListVoid>
           </SpotListNotice>
         ) : null}
-        <Loading loading={loading} />
+        {/* <Loading loading={loadingt} /> */}
         <Masonry scenicSpot={scenicSpot} />
-        <SpotObserver ref={loadRef} loading={loading} />
+        <SpotObserver ref={loadRef} loading={loadingt} />
         <Modal
           isModalOpen={isModalOpen}
           selectSpot={selectSpot}
