@@ -67,7 +67,7 @@ const SpotList = (props) => {
             <SpotListVoid>沒有可以顯示的景點。試試其他關鍵字？</SpotListVoid>
           </SpotListNotice>
         ) : null}
-        <Loading />
+        <Loading loading={loading} />
         <Masonry scenicSpot={scenicSpot} />
         <SpotObserver ref={loadRef} loading={loading} />
         <Modal
