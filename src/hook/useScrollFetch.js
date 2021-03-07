@@ -3,7 +3,8 @@ import axios from "axios";
 import getPTXAuthHeader from "../lib/getPTXAuthHeader";
 
 export const useScrollFetch = (skipNums, searchText, city) => {
-  const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+  const proxyUrl = "https://cors.io/";
+  // const proxyUrl = "https://cors-anywhere.herokuapp.com/";
   const url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot";
   const getStr = "&$top=30&$format=JSON";
   const skipStr = skipNums > 0 ? `&$skip=${skipNums}` : "";
