@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Title, SpotObserver, Masonry, Modal } from "../../components";
+import { Title, SpotObserver, Masonry, Modal, Loading } from "../../components";
 import {
   SpotListContainer,
   SpotListNotice,
@@ -67,6 +67,7 @@ const SpotList = (props) => {
             <SpotListVoid>沒有可以顯示的景點。試試其他關鍵字？</SpotListVoid>
           </SpotListNotice>
         ) : null}
+        <Loading />
         <Masonry scenicSpot={scenicSpot} />
         <SpotObserver ref={loadRef} loading={loading} />
         <Modal
