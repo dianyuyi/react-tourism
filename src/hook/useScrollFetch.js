@@ -5,6 +5,7 @@ import getPTXAuthHeader from "../lib/getPTXAuthHeader";
 export const useScrollFetch = (skipNums, searchText, city) => {
   // const proxyUrl = "https://cors.io/?";
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+  // const proxyUrl = "";
   const url = "https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot";
   const getStr = "&$top=30&$format=JSON";
   const skipStr = skipNums > 0 ? `&$skip=${skipNums}` : "";
@@ -42,7 +43,8 @@ export const useScrollFetch = (skipNums, searchText, city) => {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      throw new Error(error);
+      // throw new Error(error);
+      console.log(error);
     }
   };
 
