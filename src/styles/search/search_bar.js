@@ -41,6 +41,9 @@ export const SearchInputBox = styled.div`
     color: ${variables.grey};
     margin-right: 0.5rem;
   }
+  input {
+    min-width: 200px;
+  }
 
   @media only screen and (max-width: ${variables.breakpointPhone}) {
     padding: 0.5rem 0;

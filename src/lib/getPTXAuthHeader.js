@@ -1,8 +1,10 @@
 import jsSHA from "jssha";
 
 const getPTXAuthHeader = () => {
-  var AppID = "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF";
-  var AppKey = "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF";
+  var AppID = process.env.REACT_APP_PTA_USER_ID;
+  var AppKey = process.env.REACT_APP_PTA_USER_KEY;
+  // var AppID = "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF";
+  // var AppKey = "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF";
   var GMTString = new Date().toGMTString();
   var ShaObj = new jsSHA("SHA-1", "TEXT");
   // var ShaObj = sha256("SHA-1", "TEXT");
