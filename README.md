@@ -2,8 +2,12 @@
 
 DEMO 頁：[連結](https://react-tourism.netlify.app)
 
-proxy 測試中，目前偶爾會出現錯誤狀態。
-開發中需要透過https://cors-anywhere.herokuapp.com/ 來啟動 tmp server。
+**2022/11/01更新**
+
+由於PTX即將失效，將API金鑰轉移到統合的TDX平台上
+
+在不改動主架構的情況下增加了token存入cookie的存取機制
+
 
 ## 簡易功能介紹
 
@@ -28,11 +32,11 @@ proxy 測試中，目前偶爾會出現錯誤狀態。
 
 ### 資料來源
 
-・串接 API：MOTC Transport API V2 / Tourism
+・串接 API：TDX OAS3 API V2 / Tourism
 
 ・首頁影片：Pixels
 
 提供全台觀光景點的位置及簡易預覽。API 的使用方式及相關連結請參照官方範例說明。
 
-[MOTC API](https://ptx.transportdata.tw/MOTC?t=Tourism&v=2#)
-[PTX 平台](https://ptx.transportdata.tw/PTX/)
+[TDX OAS3 API V2 / Tourism](https://tdx.transportdata.tw/api-service/swagger/basic/cd0226cf-6292-4c35-8a0d-b595f0b15352#/Tourism/)
+[TDX 平台](https://tdx.transportdata.tw/)

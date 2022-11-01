@@ -13,8 +13,7 @@ import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 import { testData } from "../../data/testdata";
 
-const SpotList = (props) => {
-  // console.log(props);
+const SpotList = () => {
   const { city } = useParams();
 
   const {
@@ -22,12 +21,14 @@ const SpotList = (props) => {
     isModalOpen,
     selectSpot,
     setIsModalOpen,
+    cookies,
+    setCookie
   } = useGlobalContext();
 
   const [cityParams, setCityParams] = useState(city);
   const [skipNums, setSkipNums] = useState(0);
   const [cityName, setCityName] = useCityNameTrans(cityParams);
-  const [loadingt, setLoadingt] = useState(true);
+  const [loadingText, setLoadingText] = useState(true);
 
   const loadRef = useRef(null);
   const [targetState, setTargetState] = useIntersectionObserver(loadRef, {
@@ -36,7 +37,9 @@ const SpotList = (props) => {
   const { loading, scenicSpot } = useScrollFetch(
     skipNums,
     searchText,
-    cityParams
+    cityParams,
+    cookies,
+    setCookie
   );
   // tmp test
   // const scenicSpot = testData;
@@ -44,11 +47,11 @@ const SpotList = (props) => {
   useEffect(() => {
     if (scenicSpot) {
       setTimeout(() => {
-        setLoadingt(false);
+        setLoadingText(false);
       }, 1500);
     } else {
       setTimeout(() => {
-        setLoadingt(true);
+        setLoadingText(true);
       }, 1500);
     }
   }, [scenicSpot]);
@@ -74,14 +77,14 @@ const SpotList = (props) => {
             <SpotListSearchP>目前搜尋的關鍵字： {searchText}</SpotListSearchP>
           </SpotListNotice>
         ) : null}
-        {scenicSpot.length == 0 && !loadingt ? (
+        {scenicSpot.length === 0 && !loadingText ? (
           <SpotListNotice>
             <SpotListVoid>目前沒有可以顯示的景點⋯⋯</SpotListVoid>
           </SpotListNotice>
         ) : null}
         {/* <Loading loading={loadingt} /> */}
         <Masonry scenicSpot={scenicSpot} />
-        <SpotObserver ref={loadRef} loading={loadingt} />
+        <SpotObserver ref={loadRef} loading={loading} />
         <Modal
           isModalOpen={isModalOpen}
           selectSpot={selectSpot}

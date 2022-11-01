@@ -4,12 +4,15 @@ import App from "./App";
 import { AppProvider } from "./context";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
+import { CookiesProvider } from "react-cookie";
 
 ReactDOM.render(
   <React.Fragment>
     <Router onUpdate={() => window.scrollTo(0, 0)}>
       <AppProvider>
-        <App />
+        <CookiesProvider>
+          <App />
+        </CookiesProvider>
       </AppProvider>
     </Router>
   </React.Fragment>,

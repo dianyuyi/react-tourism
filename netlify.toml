@@ -5,3 +5,12 @@
 [context.production.environment]
   TOML_ENV_VAR = "From netlify.toml"
   REACT_APP_TOML_ENV_VAR = "From netlify.toml (REACT_APP_)"
+
+[[redirects]]
+  from = "/scenicSpot"
+  to = "https://tdx.transportdata.tw"
+  status = 200
+ 
+ # These are optional
+  force = true
+  headers = {X-From = "Netlify"}

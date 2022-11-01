@@ -14,7 +14,7 @@ export const Overlay = styled(motion.div)`
 export const ModalContainer = styled(motion.div)`
   width: 70%;
   height: 60%;
-  padding: 0.5rem;
+  padding: 1rem;
   background-color: white;
   position: absolute;
   top: 50%;
@@ -50,6 +50,10 @@ export const ModalImg = styled.img`
   object-fit: cover;
   padding-right: 1rem;
   margin-bottom: 0.5rem;
+
+  @media screen and (max-width: ${variables.breakpointPhone}) {
+    max-height: 160px;
+  }
 `;
 export const ModalP = styled.p`
   font-size: 0.875rem;
@@ -64,7 +68,7 @@ export const CloseButton = styled.svg`
   width: 20px;
   height: 20px;
   position: absolute;
-  right: 18px;
-  top: 18px;
+  right: 16px;
+  top: 16px;
   cursor: pointer;
 `;

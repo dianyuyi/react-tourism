@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useCallback } from "react";
+import { useCookies } from 'react-cookie';
 
-// import { getPTXAuthHeader } from "./lib/getPTXAuthHeader";
 import { testData } from "./data/testdata";
 
 const AppContext = React.createContext();
@@ -9,6 +9,9 @@ const AppProvider = ({ children }) => {
   const [searchText, setSearchText] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectSpot, setSelectSpot] = useState({});
+
+  const [cookies, setCookie] = useCookies(['TDX_TOKEN']);
+
 
   return (
     <AppContext.Provider
@@ -19,6 +22,8 @@ const AppProvider = ({ children }) => {
         setIsModalOpen,
         selectSpot,
         setSelectSpot,
+        cookies,
+        setCookie
       }}
     >
       {children}

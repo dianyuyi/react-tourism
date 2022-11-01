@@ -17,13 +17,13 @@ import {
 } from "react-icons/fa";
 
 const About = () => {
-  const url = "https://ptx.transportdata.tw/MOTC?t=Tourism&v=2#";
-  const url2 = "https://ptx.transportdata.tw/PTX/";
-  const MotcUrl = (e) => {
+  const url = "https://tdx.transportdata.tw/api-service/swagger/basic/cd0226cf-6292-4c35-8a0d-b595f0b15352#/Tourism/TourismApi_ScenicSpot_2240";
+  const url2 = "https://tdx.transportdata.tw/";
+  const APIDocUrl = (e) => {
     e.preventDefault();
     window.open(url, "_blank");
   };
-  const PTXUrl = (e) => {
+  const TDXUrl = (e) => {
     e.preventDefault();
     window.open(url, "_blank");
   };
@@ -53,7 +53,7 @@ const About = () => {
         <IntroContext>
           <IntroTitle>資料來源</IntroTitle>
           <IntroList>
-            <IntroItem>・串接API：MOTC Transport API V2 / Tourism</IntroItem>
+            <IntroItem>・串接API：TDX OAS3 API V2 / Tourism</IntroItem>
             <IntroItem>・首頁影片：Pixels</IntroItem>
           </IntroList>
 
@@ -63,20 +63,20 @@ const About = () => {
         </IntroContext>
         <BtnContainer>
           <OuterLinkBtn
-            onClick={(e) => MotcUrl(e)}
+            onClick={(e) => APIDocUrl(e)}
             to={url}
             target="_blank"
             rel="noreferrer noopener"
           >
-            MOTC API
+            TDX OAS3 API
           </OuterLinkBtn>
           <OuterLinkBtn
-            onClick={(e) => PTXUrl(e)}
+            onClick={(e) => TDXUrl(e)}
             to={url2}
             target="_blank"
             rel="noreferrer noopener"
           >
-            PTX 平台
+            TDX 平台
           </OuterLinkBtn>
         </BtnContainer>
       </AboutContainer>
