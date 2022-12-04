@@ -11,7 +11,6 @@ import { useCityNameTrans } from "../../hook/useCityNameTrans";
 import { useScrollFetch } from "../../hook/useScrollFetch";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context";
-import { testData } from "../../data/testdata";
 
 const SpotList = () => {
   const { city } = useParams();
@@ -22,7 +21,6 @@ const SpotList = () => {
     selectSpot,
     setIsModalOpen,
     cookies,
-    setCookie
   } = useGlobalContext();
 
   const [cityParams, setCityParams] = useState(city);
@@ -39,11 +37,8 @@ const SpotList = () => {
     searchText,
     cityParams,
     cookies,
-    setCookie
   );
-  // tmp test
-  // const scenicSpot = testData;
-  // const loading = true;
+
   useEffect(() => {
     if (scenicSpot) {
       setTimeout(() => {
@@ -57,14 +52,11 @@ const SpotList = () => {
   }, [scenicSpot]);
 
   useEffect(() => {
-    // console.log(targetState.inView);
     if (targetState.inView && window.scrollY < 100) {
-      // console.log("ref act initial", skipNums);
     }
     if (targetState.inView && window.scrollY > 100) {
       let updateSkip = skipNums + 30;
       setSkipNums(updateSkip);
-      // console.log("ref act below", updateSkip);
     }
   }, [targetState.inView]);
 

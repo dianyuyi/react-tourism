@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect, useCallback } from "react";
-import { useCookies } from 'react-cookie';
+import Cookies from 'universal-cookie';
 
 import { testData } from "./data/testdata";
 
@@ -10,8 +10,7 @@ const AppProvider = ({ children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectSpot, setSelectSpot] = useState({});
 
-  const [cookies, setCookie] = useCookies(['TDX_TOKEN']);
-
+  const cookies = new Cookies();
 
   return (
     <AppContext.Provider
@@ -23,7 +22,6 @@ const AppProvider = ({ children }) => {
         selectSpot,
         setSelectSpot,
         cookies,
-        setCookie
       }}
     >
       {children}

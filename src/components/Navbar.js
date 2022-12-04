@@ -42,7 +42,6 @@ function Navbar({ path }) {
   const handleSubmenuOpen = (e) => {
     e.preventDefault();
     const parent = e.target.getBoundingClientRect();
-    // console.log(parent);
     const posX = (parent.left + parent.right) / 2 - parent.width / 2 + 10;
     const posY = parent.bottom + 8;
     setSubmenuPos({ posX, posY });

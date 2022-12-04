@@ -37,9 +37,6 @@ const Submenu = ({ submenuPos, setIsSubmenuOpen, isSubmenuOpen }) => {
   const [isFolderOpen, setIsFolderOpen] = useState(false);
   const [areaPos, setAreaPos] = useState(0);
 
-  // console.log(posX, posY);
-  // console.log(container.current);
-
   const handleFolderOpen = (e) => {
     e.preventDefault();
     const parent = e.target.getBoundingClientRect();

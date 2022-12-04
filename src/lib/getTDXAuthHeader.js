@@ -1,10 +1,10 @@
 import axios from "axios";
 import qs from "qs";
 
-const getTDXAuthHeader = async (cookies, setCookie) => {
+const getTDXAuthHeader = async (cookies) => {
   let accessToken = "";
-  if (cookies.TDX_TOKEN) {
-    accessToken = cookies.TDX_TOKEN;
+  if (cookies.get("TDX_TOKEN")) {
+    accessToken = cookies.get("TDX_TOKEN");
   } else {
     const config = {
       method: "post",
@@ -22,9 +22,8 @@ const getTDXAuthHeader = async (cookies, setCookie) => {
 
     await axios(config)
       .then((res) => {
-        setCookie("TDX_TOKEN", res.data, [{ maxAge: res.data.expires_in }]);
+        cookies.set("TDX_TOKEN", res.data.access_token, { maxAge: res.data.expires_in });
         accessToken = res.data;
-        // return res.data;
       })
       .catch((error) => {
         console.log(error);

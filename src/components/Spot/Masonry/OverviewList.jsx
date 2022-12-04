@@ -44,7 +44,6 @@ class OverviewList extends React.PureComponent {
     const { columnWidth, height } = this.state;
 
     const datum = items[index];
-    // console.log(datum);
     return (
       <CellMeasurer cache={this._cache} index={index} key={key} parent={parent}>
         <div

@@ -24,7 +24,6 @@ class OverviewListContainer extends React.PureComponent {
 
   render() {
     const { scenicSpot } = this.props;
-    // console.log(scenicSpot);
     return (
       <div
         id="scroll-wrapper"

@@ -25,7 +25,6 @@ export const useIntersectionObserver = (
     (entries, observerInstance) => {
       // checks to see if the element is intersecting
 
-      // console.log(entries);
       if (entries && entries[0].isIntersecting) {
         setTargetState({
           inView: true,

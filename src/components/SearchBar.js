@@ -16,7 +16,7 @@ const SearchBar = (props) => {
   const { setSearchText, searchText } = useGlobalContext();
   const { register, handleSubmit } = useForm();
   const { color, history } = props;
-  // console.log(history);
+
   const submitData = (data) => {
     setSearchText(data.search);
     props.history.push(`/scenicSpot/${data.city}`);
